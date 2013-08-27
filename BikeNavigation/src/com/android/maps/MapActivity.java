@@ -1,5 +1,7 @@
 package com.android.maps;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -37,6 +39,9 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	private GoogleMap map;
 	private GPSTracker locationManager;
 	
+	// ............................. 
+	public ArrayList<LatLng> locationsList;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {	
 		super.onCreate(savedInstanceState);
@@ -71,6 +76,13 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	}
 	
 	public void switchToCameraMode (View view) {
+		
+	}
+	
+	/** */
+	public void onMapFinalize() {
+		
+		this.locationsList = new ArrayList<LatLng> ();
 		
 	}
 }
