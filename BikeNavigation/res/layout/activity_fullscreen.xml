@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:keepScreenOn="true"
-        android:text="@string/dummy_content"
+        android:background="@color/black_overlay"
         android:textColor="#33b5e5"
         android:textSize="50sp"
         android:textStyle="bold" />
@@ -30,6 +30,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/black_overlay"
         android:fitsSystemWindows="true" >
 
         <LinearLayout
@@ -37,7 +38,7 @@
             style="?buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
+            android:layout_gravity="center|center_horizontal"
             android:background="@color/black_overlay"
             android:orientation="horizontal"
             tools:ignore="UselessParent" >
@@ -47,8 +48,12 @@
                 style="?buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.28"
+                android:background="@color/button_color"
+                android:text="@string/dummy_button"
+                android:onClick="initMapView" />
+
         </LinearLayout>
     </FrameLayout>
 
