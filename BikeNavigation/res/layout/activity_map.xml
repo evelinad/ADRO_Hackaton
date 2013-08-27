@@ -4,10 +4,52 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
+    
+    
     <fragment
         android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         class="com.google.android.gms.maps.MapFragment" />
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_overlay"
+        android:fitsSystemWindows="true" >
+
+       <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?buttonBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+
+            <Button
+                android:id="@+id/switch_to_camera_mode"
+                style="@style/btnStyleOrange"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:layout_weight="1"
+                android:onClick="switchToCameraMode"
+                android:text="@string/switch_to_camera_mode" />
+
+            <Button
+                android:id="@+id/back_to_start"
+                style="@style/btnStyleOrange"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_weight="1"
+                android:onClick="returnToStart"
+                android:text="@string/return_to_start" />
+
+        </LinearLayout>
+
+    </FrameLayout>    
 
 </RelativeLayout> 

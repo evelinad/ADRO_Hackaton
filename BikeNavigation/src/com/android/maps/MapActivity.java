@@ -3,6 +3,7 @@ package com.android.maps;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -12,6 +13,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 
 public class MapActivity extends Activity {
@@ -48,5 +50,15 @@ public class MapActivity extends Activity {
 		getMenuInflater().inflate(R.menu.map, menu);
 		return true;
 	}
-
+	
+	// ============================================================================
+	public void returnToStart (View view) {
+	
+		Intent intent = new Intent(this, FullscreenActivity.class);
+	    startActivity(intent);
+	}
+	
+	public void switchToCameraMode (View view) {
+		
+	}
 }

@@ -189,19 +189,27 @@ containing a value of this type.
         public static final int common_signin_btn_text_normal_light=0x7f020015;
         public static final int common_signin_btn_text_pressed_dark=0x7f020016;
         public static final int common_signin_btn_text_pressed_light=0x7f020017;
-        public static final int ic_launcher=0x7f020018;
+        public static final int custom_btn_orange=0x7f020018;
+        public static final int ic_launcher=0x7f020019;
     }
     public static final class id {
-        public static final int action_settings=0x7f050009;
-        public static final int dummy_button=0x7f050007;
+        public static final int action_settings=0x7f050010;
+        public static final int back_to_start=0x7f05000f;
+        public static final int checkBox1=0x7f05000b;
+        public static final int dummy_button=0x7f050009;
         public static final int fullscreen_content=0x7f050005;
         public static final int fullscreen_content_controls=0x7f050006;
         public static final int hybrid=0x7f050004;
-        public static final int map=0x7f050008;
+        public static final int map=0x7f05000d;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int satellite=0x7f050002;
+        public static final int switch_to_camera_mode=0x7f05000e;
         public static final int terrain=0x7f050003;
+        public static final int textView1=0x7f05000a;
+        public static final int textView2=0x7f050007;
+        public static final int textView3=0x7f05000c;
+        public static final int textView4=0x7f050008;
     }
     public static final class layout {
         public static final int activity_fullscreen=0x7f030000;
@@ -236,6 +244,8 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f06000f;
+        public static final int checkbox_record=0x7f06001f;
+        public static final int checkbox_record_details=0x7f060020;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -293,7 +303,12 @@ containing a value of this type.
         public static final int common_signin_button_text_long=0x7f06000e;
         public static final int dummy_button=0x7f060016;
         public static final int dummy_content=0x7f060017;
+        public static final int empty_text=0x7f06001e;
         public static final int hello_world=0x7f06001a;
+        public static final int return_to_start=0x7f06001b;
+        public static final int start_description=0x7f06001d;
+        public static final int start_title=0x7f06001c;
+        public static final int switch_to_camera_mode=0x7f060021;
         public static final int title_activity_map=0x7f060018;
     }
     public static final class style {
@@ -328,8 +343,9 @@ containing a value of this type.
         public static final int AppTheme=0x7f080001;
         public static final int ButtonBar=0x7f080003;
         public static final int ButtonBarButton=0x7f080004;
-        public static final int FullscreenActionBarStyle=0x7f080005;
+        public static final int FullscreenActionBarStyle=0x7f080006;
         public static final int FullscreenTheme=0x7f080002;
+        public static final int btnStyleOrange=0x7f080005;
     }
     public static final class styleable {
         /** 
