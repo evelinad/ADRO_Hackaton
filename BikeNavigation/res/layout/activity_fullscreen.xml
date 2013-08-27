@@ -46,6 +46,13 @@
             android:orientation="vertical"
             android:showDividers="none"
             tools:ignore="UselessParent" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="237dp"
+                android:layout_height="334dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/bike" />
         
         	<TextView
         	    android:id="@+id/textView2"
@@ -96,6 +103,14 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/checkbox_record_details"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
+            
+        	<TextView
+        	    android:id="@+id/textView5"
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:layout_gravity="center_horizontal"
+        	    android:text="@string/empty_text"
+        	    android:textAppearance="?android:attr/textAppearanceLarge" />            
 
         </LinearLayout>
 
