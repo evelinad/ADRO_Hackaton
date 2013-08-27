@@ -1,5 +1,11 @@
 package com.android.maps;
 
+import java.util.ArrayList;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Context;
@@ -16,6 +22,8 @@ import android.util.Log;
 public class GPSTracker extends Service implements LocationListener {
  
     private final Context mContext;
+    GoogleMap map;
+    ArrayList<LatLng> locationsList;
  
     // flag for GPS status
     boolean isGPSEnabled = false;
@@ -39,9 +47,11 @@ public class GPSTracker extends Service implements LocationListener {
     // Declaring a Location Manager
     protected LocationManager locationManager;
  
-    public GPSTracker(Context context) {
+    public GPSTracker(Context context, GoogleMap map, ArrayList<LatLng> locations) {
         this.mContext = context;
         getLocation();
+        this.map = map;
+        this.locationsList = locations;
     }
  
     public Location getLocation() {
@@ -180,6 +190,9 @@ public class GPSTracker extends Service implements LocationListener {
  
     @Override
     public void onLocationChanged(Location location) {
+    	LatLng loc = new LatLng(location.getLatitude(), location.getLongitude()); 
+	    map.moveCamera(CameraUpdateFactory.newLatLng(loc));
+	  	map.animateCamera(CameraUpdateFactory.zoomTo(10));
     }
  
     @Override
