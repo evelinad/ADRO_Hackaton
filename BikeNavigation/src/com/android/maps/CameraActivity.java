@@ -1,7 +1,10 @@
 package com.android.maps;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Timestamp;
 
 import com.android.maps.SensorController;
@@ -14,7 +17,11 @@ import android.hardware.Camera;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.CamcorderProfile;
+import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -109,9 +116,12 @@ public class CameraActivity extends Activity {
         		WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
     
+        
     public void Load(){
+    	
     	// Try to get the camera 
         Camera c = getCameraInstance();
+        
         
         // If the camera was received, create the app
         if (c != null){
@@ -135,6 +145,11 @@ public class CameraActivity extends Activity {
             
             // Set the layout as the apps content view 
             setContentView(alParent);
+
+            
+
+            
+            
         }
         // If the camera was not received, close the app
         else {
