@@ -19,34 +19,88 @@
         android:fitsSystemWindows="true" >
 
        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="?buttonBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent" >
+           android:id="@+id/activity_map_controls"
+           style="?buttonBarStyle"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_gravity="bottom|center_horizontal"
+           android:background="@color/black_overlay"
+           android:orientation="vertical"
+           tools:ignore="UselessParent" >
+           
+           	<LinearLayout
+           	    android:id="@+id/activity_map_controls_initroute"
+	            style="?buttonBarStyle"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="bottom|center_horizontal"
+	            android:background="@color/black_overlay"
+	            android:orientation="horizontal"
+	            tools:ignore="UselessParent">
+            
+            	<Button
+	                android:id="@+id/finalize_route"
+	                style="@style/btnStyleOrange"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="bottom|left"
+	                android:layout_weight="1"
+	                android:onClick="onMapFinalize"
+	                android:text="@string/finalize_route" />
 
-            <Button
-                android:id="@+id/switch_to_camera_mode"
-                style="@style/btnStyleOrange"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|left"
-                android:layout_weight="1"
-                android:onClick="switchToCameraMode"
-                android:text="@string/switch_to_camera_mode" />
+	            <Button
+	                android:id="@+id/back_to_start"
+	                style="@style/btnStyleOrange"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="bottom|right"
+	                android:layout_weight="1"
+	                android:onClick="returnToStart"
+	                android:text="@string/return_to_start" />
+	                        		    	    
+           	</LinearLayout>
+           
+           	<LinearLayout
+           	    android:id="@+id/activity_map_controls_onroute"
+	            style="?buttonBarStyle"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="bottom|center_horizontal"
+	            android:background="@color/black_overlay"
+	            android:orientation="horizontal"
+	            tools:ignore="UselessParent">
+                               
+	            <Button
+	                android:id="@+id/switch_to_camera_mode"
+	                style="@style/btnStyleOrange"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="bottom|left"
+	                android:layout_weight="1"
+	                android:onClick="switchToCameraMode"
+	                android:text="@string/switch_to_camera_mode" />
 
-            <Button
-                android:id="@+id/back_to_start"
-                style="@style/btnStyleOrange"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|right"
-                android:layout_weight="1"
-                android:onClick="returnToStart"
-                android:text="@string/return_to_start" />
+	            <Button
+	                android:id="@+id/show_stats"
+	                style="@style/btnStyleOrange"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="bottom|center_horizontal"
+	                android:layout_weight="1"
+	                android:onClick="showStats"
+	                android:text="@string/show_stats" />
+	                        
+	            <Button
+	                android:id="@+id/exit_route"
+	                style="@style/btnStyleOrange"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="bottom|right"
+	                android:layout_weight="1"
+	                android:onClick="exitRoute"
+	                android:text="@string/exit_route" />
+	            
+            </LinearLayout>
 
         </LinearLayout>
 

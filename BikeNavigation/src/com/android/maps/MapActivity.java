@@ -40,10 +40,16 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	private GPSTracker locationManager;
 	
 	// ............................. 
-	public ArrayList<LatLng> locationsList;
+	static ArrayList<LatLng> locationsList;
+	static Intent cameraModeIntent;
+	
+	static boolean isAtStart = true;
+	static boolean isOnRouteConfig = true;
+	static boolean isOnRoute = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {	
+		
 		super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_map);
 	    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
@@ -55,6 +61,30 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	    LatLng loc = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()); 
 	    map.moveCamera(CameraUpdateFactory.newLatLng(loc));
 	  	map.animateCamera(CameraUpdateFactory.zoomTo(10));
+	  	
+	  	// deactivate the 'on route' buttons
+	  	if (MapActivity.isAtStart) {
+		  	final View activity_map_controls_onroute = findViewById(R.id.activity_map_controls_onroute);
+		  	activity_map_controls_onroute.setVisibility(View.GONE);
+		  	MapActivity.isAtStart = false;
+	  	
+	  	} else {
+	  		if (MapActivity.isOnRouteConfig) {
+	  		  	final View activity_map_controls_onroute = findViewById(R.id.activity_map_controls_onroute);
+	  		  	activity_map_controls_onroute.setVisibility(View.GONE);
+	  		  	
+	  		  	final View activity_map_controls_initroute = findViewById(R.id.activity_map_controls_initroute);	
+	  		  	activity_map_controls_initroute.setVisibility(View.VISIBLE);	 	  			
+	  		}
+	  		if (MapActivity.isOnRoute) {
+	  		  	final View activity_map_controls_onroute = findViewById(R.id.activity_map_controls_onroute);
+	  		  	activity_map_controls_onroute.setVisibility(View.VISIBLE);
+	  		  	
+	  		  	final View activity_map_controls_initroute = findViewById(R.id.activity_map_controls_initroute);	
+	  		  	activity_map_controls_initroute.setVisibility(View.GONE);	 	  			
+	  		}
+	  	}
+	  	
 	}
 
 	@Override
@@ -71,17 +101,48 @@ public class MapActivity extends Activity implements OnMapClickListener {
 		locationsList.add(point);
 	}
 	
-	public void returnToStart (View view) {
-		Intent intent = new Intent(this, FullscreenActivity.class);
-	    startActivity(intent);
-	}
 	
-	public void switchToCameraMode (View view) {
+	// on route config
+	// ================================================================= 
+	public void onMapFinalize(View view) {
 		
+	  	MapActivity.isAtStart = false;
+	  	MapActivity.isOnRouteConfig = false;
+	  	MapActivity.isOnRoute = true;
+
+	  	this.locationsList = new ArrayList<LatLng> ();
+		
+	  	final View activity_map_controls_onroute = findViewById(R.id.activity_map_controls_onroute);
+	  	activity_map_controls_onroute.setVisibility(View.VISIBLE);
+	  	
+	  	final View activity_map_controls_initroute = findViewById(R.id.activity_map_controls_initroute);	
+	  	activity_map_controls_initroute.setVisibility(View.GONE);	
+	  	
+	  	// change here
+		// this.cameraModeIntent = new Intent(this, CameraActivity.class);
+
+	}
+
+	public void returnToStart (View view) {
+
+		finish();		
 	}
 	
-	/** */
-	public void onMapFinalize() {
-		//this.locationsList = new ArrayList<LatLng> ();	`
+	// on route 
+	// ================================================================= 
+	public void switchToCameraMode (View view) {
+	
+		//MapActivity.cameraModeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		//startActivity(this.cameraModeIntent);
 	}
+	
+	public void exitRoute (View view){
+	
+		//MapActivity.cameraModeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		finish();
+	}
+	
+	public void showStats (View view) {
+	
+	}		
 }

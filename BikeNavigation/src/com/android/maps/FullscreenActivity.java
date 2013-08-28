@@ -2,6 +2,9 @@ package com.android.maps;
 
 import com.android.maps.util.SystemUiHider;
 
+import android.widget.CheckBox;
+import android.widget.ImageView;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -81,29 +84,32 @@ public class FullscreenActivity extends Activity {
 								mShortAnimTime = getResources().getInteger(
 										android.R.integer.config_shortAnimTime);
 							}
-							controlsView
-									.animate()
-									.translationY(visible ? 0 : mControlsHeight)
-									.setDuration(mShortAnimTime);
+							//controlsView
+								//	.animate()
+								//	.translationY(visible ? 0 : mControlsHeight)
+								//	.setDuration(mShortAnimTime);
 						} else {
 							// If the ViewPropertyAnimator APIs aren't
 							// available, simply show or hide the in-layout UI
 							// controls.
-							controlsView.setVisibility(visible ? View.VISIBLE
-									: View.GONE);
+							//controlsView.setVisibility(visible ? View.VISIBLE
+								//	: View.GONE);
 						}
 
 						if (visible && AUTO_HIDE) {
 							// Schedule a hide().
-							delayedHide(AUTO_HIDE_DELAY_MILLIS);
+							//delayedHide(AUTO_HIDE_DELAY_MILLIS);
 						}
 					}
 				});
+		
+		addListenerOnChkIos();
 
 		// Set up the user interaction to manually show or hide the system UI.
 		contentView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
+				
 				if (TOGGLE_ON_CLICK) {
 					mSystemUiHider.toggle();
 				} else {
@@ -168,4 +174,26 @@ public class FullscreenActivity extends Activity {
 		Intent intent = new Intent(this, MapActivity.class);
 	    startActivity(intent);
 	}
+	
+	 public void addListenerOnChkIos() {
+		 
+			final View checkbox = (CheckBox) findViewById(R.id.checkBox1);
+		 
+			checkbox.setOnClickListener(new View.OnClickListener() {
+		 
+			  @Override
+			  public void onClick(View v) {
+		                //is chkIos checked?
+				if (((CheckBox) v).isChecked()) {
+					
+					// TODO
+					// add code here when the checkbox is checked
+					// ===========================================
+					finish();
+				}
+		 
+			  }
+			});
+		 
+		  }	
 }
