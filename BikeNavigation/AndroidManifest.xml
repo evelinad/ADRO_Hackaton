@@ -54,7 +54,7 @@
         <activity
             android:name="com.android.maps.CameraActivity"
             android:label="@string/title_activity_camera" >
-                    </activity>
+        </activity>
     </application>
 
 </manifest>
