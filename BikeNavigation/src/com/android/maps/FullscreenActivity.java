@@ -189,7 +189,7 @@ public class FullscreenActivity extends Activity {
 					// TODO
 					// add code here when the checkbox is checked
 					// ===========================================
-					// finish();
+					finish();
 				}
 		 
 			  }
