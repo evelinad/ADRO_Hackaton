@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
@@ -26,9 +27,6 @@ public class GPSTracker extends Service implements LocationListener {
  
     private final Context mContext;
     GoogleMap map;
-    PolylineOptions options;
-    Polyline path;
-    ArrayList<LatLng> locationsList;
  
     // flag for GPS status
     boolean isGPSEnabled = false;
@@ -52,13 +50,9 @@ public class GPSTracker extends Service implements LocationListener {
     // Declaring a Location Manager
     protected LocationManager locationManager;
  
-    public GPSTracker(Context context, GoogleMap map, ArrayList<LatLng> locations) {
+    public GPSTracker(Context context) {
         this.mContext = context;
         getLocation();
-        this.map = map;
-        this.locationsList = locations;
-        options = new PolylineOptions().width(5).color(Color.BLUE).geodesic(true);
-        path = map.addPolyline(options);
     }
  
     public Location getLocation() {
@@ -197,10 +191,12 @@ public class GPSTracker extends Service implements LocationListener {
  
     @Override
     public void onLocationChanged(Location location) {
-//    	LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
-//    	path.remove();
-//	    options.add(loc);
-//	  	path = map.addPolyline(options);
+    	Marker p = MapActivity.locationsList.get(0);
+    	LatLng coord = p.getPosition();
+    	if(Math.abs(coord.latitude - location.getLatitude()) <= 1 &&
+    			Math.abs(coord.longitude - location.getLongitude()) <= 1) {
+    		p.remove();
+    	}
     }
  
     @Override
