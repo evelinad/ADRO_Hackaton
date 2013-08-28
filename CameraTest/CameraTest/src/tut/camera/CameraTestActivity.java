@@ -5,10 +5,15 @@ package tut.camera;
 import java.util.Date;
 import java.sql.Timestamp;
 
+import tut.camera.CameraPreview;
+import tut.camera.DrawView;
 import tut.camera.SensorController;
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.Point;
 import android.hardware.Camera;
 import android.location.Location;
 import android.location.LocationListener;
@@ -17,6 +22,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
@@ -28,6 +34,8 @@ public class CameraTestActivity extends Activity {
 	// Our variables 
 	CameraPreview cv;
 	DrawView dv;
+	double height;
+	double width;
 	FrameLayout alParent;
     LocationManager mlocManager=null;  
     LocationListener mlocListener;	
@@ -51,9 +59,18 @@ public class CameraTestActivity extends Activity {
 		   mHandler.postDelayed(ReadSensorValues, 100);
 		  }       
 		 };
-    @Override
+    @SuppressLint("NewApi")
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        
+        display.getSize(size);
+        width = size.y;
+        height = size.x;
+        Log.w("ceva",String.valueOf(width)+" "+String.valueOf(height));
         MySensors = new SensorController(this);
         mlocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);  
         mlocListener = new LocationController();
@@ -115,6 +132,8 @@ public class CameraTestActivity extends Activity {
             
             // Create a new draw view and add it to the layout
             dv = new DrawView(this);
+            dv.height=height;
+            dv.width=width;
             alParent.addView(dv);
             
             // Set the layout as the apps content view 

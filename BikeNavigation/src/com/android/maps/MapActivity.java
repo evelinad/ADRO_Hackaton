@@ -55,7 +55,8 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 	    map.setOnMapClickListener(this);
 	    map.setMyLocationEnabled(true);
-	    locationManager = new GPSTracker(this);
+	    locationsList = new ArrayList<LatLng>();
+	    locationManager = new GPSTracker(this, map, locationsList);
 	    Location currentLocation = locationManager.getLocation();
 	    LatLng loc = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()); 
 	    map.moveCamera(CameraUpdateFactory.newLatLng(loc));
@@ -96,7 +97,8 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	@Override
 	public void onMapClick(LatLng point) {
 		// TODO Auto-generated method stub
-		map.addMarker(new MarkerOptions().position(point).title("Point"));
+		map.addMarker(new MarkerOptions().position(point).title("Checkpoint"));
+		locationsList.add(point);
 	}
 	
 	
@@ -122,7 +124,7 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	}
 
 	public void returnToStart (View view) {
-	
+
 		finish();		
 	}
 	
@@ -141,6 +143,6 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	}
 	
 	public void showStats (View view) {
-		
-	}
+	
+	}		
 }
