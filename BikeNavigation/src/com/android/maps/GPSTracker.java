@@ -191,12 +191,15 @@ public class GPSTracker extends Service implements LocationListener {
  
     @Override
     public void onLocationChanged(Location location) {
-    	Marker p = MapActivity.locationsList.get(0);
-    	LatLng coord = p.getPosition();
-    	if(Math.abs(coord.latitude - location.getLatitude()) <= 1 &&
-    			Math.abs(coord.longitude - location.getLongitude()) <= 1) {
-    		p.remove();
-    	}
+		if (MapActivity.locationsList.size() > 0) {
+			Marker p = MapActivity.locationsList.get(0);
+			LatLng coord = p.getPosition();
+			if (Math.abs(coord.latitude - location.getLatitude()) <= 0.003
+					&& Math.abs(coord.longitude - location.getLongitude()) <= 0.003) {
+				p.remove();
+				MapActivity.locationsList.remove(0);
+			}
+		}
     }
  
     @Override

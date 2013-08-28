@@ -38,7 +38,7 @@ public class MapActivity extends Activity implements OnMapClickListener {
    
 	private GoogleMap map;
 	private GPSTracker locationManager;
-	
+	int pointsNr = 0;
 	// ............................. 
 	static ArrayList<Marker> locationsList;
 	static Intent cameraModeIntent;
@@ -103,7 +103,7 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	@Override
 	public void onMapClick(LatLng point) {
 		// TODO Auto-generated method stub
-		Marker m = map.addMarker(new MarkerOptions().position(point).title("Checkpoint"));
+		Marker m = map.addMarker(new MarkerOptions().position(point).title("Checkpoint " + pointsNr));
 		locationsList.add(m);
 	}
 	
