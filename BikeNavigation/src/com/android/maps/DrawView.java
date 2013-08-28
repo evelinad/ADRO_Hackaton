@@ -209,7 +209,7 @@ public class DrawView extends SurfaceView {
 					locationB.setLatitude(latitude);
 					locationB.setLongitude(longitude);
 					// distance = locationA.distanceTo(locationB); //in meters
-					distance = locationA.distanceTo(locationB) / 1000;
+					distance = ((int)locationA.distanceTo(locationB)) / 1000;
 					// va fi mereu la stanga
 
 					// deltaLat = (lat1-lat2) * earthcirc) / 360;
@@ -238,7 +238,7 @@ public class DrawView extends SurfaceView {
 					locationB.setLatitude(latitude);
 					locationB.setLongitude(longitude);
 					// distance = locationA.distanceTo(locationB); //in meters
-					distance = locationA.distanceTo(locationB) / 1000;
+					distance = ((int)locationA.distanceTo(locationB)) / 1000;
 					// va fi mereu la stanga
 
 					// deltaLat = (lat1-lat2) * earthcirc) / 360;
@@ -272,7 +272,7 @@ public class DrawView extends SurfaceView {
 						locationB.setLongitude(longitude);
 						// distance = locationA.distanceTo(locationB); //in
 						// meters
-						distance = locationA.distanceTo(locationB) / 1000;
+						distance = ((int)locationA.distanceTo(locationB)) / 1000;
 						// va fi mereu la stanga
 
 						// deltaLat = (lat1-lat2) * earthcirc) / 360;
@@ -301,7 +301,7 @@ public class DrawView extends SurfaceView {
 						locationB.setLongitude(longitude);
 						// distance = locationA.distanceTo(locationB); //in
 						// meters
-						distance = locationA.distanceTo(locationB) / 1000;
+						distance = ((int)locationA.distanceTo(locationB)) / 1000;
 						// va fi mereu la stanga
 
 						// deltaLat = (lat1-lat2) * earthcirc) / 360;
@@ -396,7 +396,7 @@ public class DrawView extends SurfaceView {
 					locationB.setLatitude(latitude);
 					locationB.setLongitude(longitude);
 					// distance = locationA.distanceTo(locationB); //in meters
-					distance = locationA.distanceTo(locationB) / 1000;
+					distance = ((int)locationA.distanceTo(locationB)) / 1000;
 					// va fi mereu la stanga
 
 					// deltaLat = (lat1-lat2) * earthcirc) / 360;
@@ -425,7 +425,7 @@ public class DrawView extends SurfaceView {
 					locationB.setLatitude(latitude);
 					locationB.setLongitude(longitude);
 					// distance = locationA.distanceTo(locationB); //in meters
-					distance = locationA.distanceTo(locationB) / 1000;
+					distance = ((int)locationA.distanceTo(locationB)) / 1000;
 					// va fi mereu la stanga
 
 					// deltaLat = (lat1-lat2) * earthcirc) / 360;
@@ -459,7 +459,7 @@ public class DrawView extends SurfaceView {
 						locationB.setLongitude(longitude);
 						// distance = locationA.distanceTo(locationB); //in
 						// meters
-						distance = locationA.distanceTo(locationB) / 1000;
+						distance = ((int)locationA.distanceTo(locationB)) / 1000;
 						// va fi mereu la stanga
 
 						// deltaLat = (lat1-lat2) * earthcirc) / 360;
@@ -488,7 +488,7 @@ public class DrawView extends SurfaceView {
 						locationB.setLongitude(longitude);
 						// distance = locationA.distanceTo(locationB); //in
 						// meters
-						distance = locationA.distanceTo(locationB) / 1000;
+						distance = ((int)locationA.distanceTo(locationB)) / 1000;
 						// va fi mereu la stanga
 
 						// deltaLat = (lat1-lat2) * earthcirc) / 360;
