@@ -5,7 +5,10 @@ package tut.camera;
 import java.util.Date;
 import java.sql.Timestamp;
 
+import tut.camera.CameraPreview;
+import tut.camera.DrawView;
 import tut.camera.SensorController;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
