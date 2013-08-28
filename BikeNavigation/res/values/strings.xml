@@ -25,4 +25,5 @@
 	
 	<string name="hints_map"> Tap on the map to select milestones for your route. When done, tap on Finalize Route. </string>
 
+	<string name="finished_route"> Well done! You reached the end of your route. </string>
 </resources>

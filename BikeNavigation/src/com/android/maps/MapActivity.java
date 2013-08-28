@@ -46,6 +46,7 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	static boolean isAtStart = true;
 	static boolean isOnRouteConfig = true;
 	static boolean isOnRoute = false;
+	static boolean isFinishedRoute = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {	
@@ -61,6 +62,9 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	    LatLng loc = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()); 
 	    map.moveCamera(CameraUpdateFactory.newLatLng(loc));
 	  	map.animateCamera(CameraUpdateFactory.zoomTo(10));
+	  	
+	  	final View finished_route = findViewById(R.id.finished_route);	
+	  	finished_route.setVisibility(View.GONE);		  	
 	  	
 	  	// deactivate the 'on route' buttons
 	  	if (MapActivity.isAtStart) {
@@ -153,5 +157,21 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	
 	public void showStats (View view) {
 	
-	}		
+	}	
+	
+	public void finishedRoute () {
+		
+		this.isFinishedRoute = true;
+	  	final View finished_route = findViewById(R.id.finished_route);	
+	  	finished_route.setVisibility(View.VISIBLE);		
+	  	
+		  	final View activity_map_controls_onroute = findViewById(R.id.activity_map_controls_onroute);
+		  	activity_map_controls_onroute.setVisibility(View.GONE);
+		  	
+		  	final View activity_map_controls_initroute = findViewById(R.id.activity_map_controls_initroute);	
+		  	activity_map_controls_initroute.setVisibility(View.GONE);
+		  	
+		  	final View activity_map_hints = findViewById(R.id.hints_initroute);	
+		  	activity_map_hints.setVisibility(View.GONE);	 	  	
+	}
 }

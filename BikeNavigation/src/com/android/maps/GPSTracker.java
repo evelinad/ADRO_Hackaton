@@ -22,6 +22,33 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.app.Activity;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.widget.Toast;
  
 public class GPSTracker extends Service implements LocationListener {
  
@@ -198,6 +225,17 @@ public class GPSTracker extends Service implements LocationListener {
 					&& Math.abs(coord.longitude - location.getLongitude()) <= 0.003) {
 				p.remove();
 				MapActivity.locationsList.remove(0);
+				
+				if(MapActivity.locationsList.isEmpty()) {
+				
+					MapActivity.isFinishedRoute = true;
+					Context context = getApplicationContext();
+					CharSequence text = "Well done! You reached the end of your route. ";
+					int duration = Toast.LENGTH_SHORT;
+
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+				}
 			}
 		}
     }
