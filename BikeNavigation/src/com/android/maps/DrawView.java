@@ -52,8 +52,8 @@ public class DrawView extends SurfaceView {
 	public static final double latGal = 45.460131;
 	public static final double longGal = 28.079223;
 
-	public static final double latBr = 45.290347;
-	public static final double longBr = 27.936401;
+//	public static final double latBr = 45.290347;
+//	public static final double longBr = 27.936401;
 
 	public static final double latPit = 44.871443;
 	public static final double longPit = 24.838257;
@@ -115,7 +115,7 @@ public class DrawView extends SurfaceView {
 		targets.add(new LatLng(latCra, longCra));
 
 		targets.add(new LatLng(latGal, longGal));
-		targets.add(new LatLng(latBr, longBr));
+	//	targets.add(new LatLng(latBr, longBr));
 		targets.add(new LatLng(latCta, longCta));
 		targetsName = new ArrayList<String>();
 		targetsName.add("Ploiesti");
@@ -126,7 +126,7 @@ public class DrawView extends SurfaceView {
 		targetsName.add("Craiova");
 
 		targetsName.add("Galati");
-		targetsName.add("Braila");
+		//targetsName.add("Braila");
 
 		targetsName.add("Constanta");
 		// targets.add(new LatLng());
@@ -219,11 +219,11 @@ public class DrawView extends SurfaceView {
 					float x = (float) ((height / 2.0) - (height * deltaAngle)
 							/ (2.0 * VIEW_ANGLE)) - 120;
 					canvas.drawRoundRect(
-							new RectF(x - 35, y, x + 245, y + 110), 10, 10,
+							new RectF(x - 35, y-60, x + 245, y + 50), 10, 10,
 							paint);
-					canvas.drawText(targetsName.get(i), x, y + 40, textPaintBIG2);
+					canvas.drawText(targetsName.get(i), x, y-20 , textPaintBIG2);
 					canvas.drawText(String.valueOf(distance) + " km", x,
-							y + 95, textPaint);
+							y + 35, textPaint);
 					if (DEBUG)
 						canvas.drawText(String.valueOf(deltaAngle), x, y + 75,
 								textPaint);
@@ -248,11 +248,11 @@ public class DrawView extends SurfaceView {
 					float x = (float) ((height / 2.0) + (height * deltaAngle)
 							/ (2.0 * VIEW_ANGLE)) - 120;
 					canvas.drawRoundRect(
-							new RectF(x - 35, y, x + 245, y + 110), 10, 10,
+							new RectF(x - 35, y-60, x + 245, y + 50), 10, 10,
 							paint);
-					canvas.drawText(targetsName.get(i), x, y + 40, textPaintBIG2);
+					canvas.drawText(targetsName.get(i), x, y-20 , textPaintBIG2);
 					canvas.drawText(String.valueOf(distance) + " km", x,
-							y + 95, textPaint);
+							y + 35, textPaint);
 					if (DEBUG)
 						canvas.drawText(String.valueOf(deltaAngle), x, y + 75,
 								textPaint);
@@ -281,12 +281,12 @@ public class DrawView extends SurfaceView {
 						// dist = sqrt( sqr(distLat) + sqr(distLong) )
 						float x = (float) ((height / 2.0) - (height * Math
 								.abs(deltaAngle)) / (2.0 * VIEW_ANGLE)) - 120;
-						canvas.drawRoundRect(new RectF(x - 35, y, x + 245,
-								y + 110), 10, 10, paint);
-						canvas.drawText(targetsName.get(i), x, y + 40,
-								textPaintBIG2);
+						canvas.drawRoundRect(
+								new RectF(x - 35, y-60, x + 245, y + 50), 10, 10,
+								paint);
+						canvas.drawText(targetsName.get(i), x, y-20 , textPaintBIG2);
 						canvas.drawText(String.valueOf(distance) + " km", x,
-								y + 95, textPaint);
+								y + 35, textPaint);
 						if (DEBUG)
 							canvas.drawText(String.valueOf(deltaAngle), x,
 									y + 75, textPaint);
@@ -310,12 +310,12 @@ public class DrawView extends SurfaceView {
 						// dist = sqrt( sqr(distLat) + sqr(distLong) )
 						float x = (float) ((height / 2.0) + (height * Math
 								.abs(deltaAngle)) / (2.0 * VIEW_ANGLE)) - 120;
-						canvas.drawRoundRect(new RectF(x - 35, y, x + 245,
-								y + 110), 10, 10, paint);
-						canvas.drawText(targetsName.get(i), x, y + 40,
-								textPaintBIG2);
+						canvas.drawRoundRect(
+								new RectF(x - 35, y-60, x + 245, y + 50), 10, 10,
+								paint);
+						canvas.drawText(targetsName.get(i), x, y-20 , textPaintBIG2);
 						canvas.drawText(String.valueOf(distance) + " km", x,
-								y + 95, textPaint);
+								y + 35, textPaint);
 						if (DEBUG)
 							canvas.drawText(String.valueOf(deltaAngle), x,
 									y + 75, textPaint);
@@ -330,8 +330,6 @@ public class DrawView extends SurfaceView {
 				// targetPointsPaint);
 				// canvas.drawText("angles = "+String.valueOf(actualAngle), 50,
 				// 60+20 * i, textPaintDEBUG);
-				if (i == targets.size() - 1)
-					gpsAngle = (float) deltaAngle;
 
 			}
 		}
@@ -408,11 +406,11 @@ public class DrawView extends SurfaceView {
 					float x = (float) ((height / 2.0) - (height * deltaAngle)
 							/ (2.0 * VIEW_ANGLE)) - 120;
 					canvas.drawRoundRect(
-							new RectF(x - 35, y, x + 245, y + 110), 10, 10,
+							new RectF(x - 35, y+60, x + 245, y + 110+60), 10, 10,
 							paint);
-					canvas.drawText(title, x, y + 40, textPaintBIG);
+					canvas.drawText(title, x, y + 40+60, textPaintBIG);
 					canvas.drawText(String.valueOf(distance) + " km", x,
-							y + 95, textPaint);
+							y + 95+60, textPaint);
 					if (DEBUG)
 						canvas.drawText(String.valueOf(deltaAngle), x, y + 75,
 								textPaint);
@@ -437,12 +435,12 @@ public class DrawView extends SurfaceView {
 					float x = (float) ((height / 2.0) + (height * deltaAngle)
 							/ (2.0 * VIEW_ANGLE)) - 120;
 					canvas.drawRoundRect(
-							new RectF(x - 35, y, x + 245, y + 110), 10, 10,
+							new RectF(x - 35, y+60, x + 245, y + 110+60), 10, 10,
 							paint);
-					canvas.drawText(title, x, y + 40, textPaintBIG);
+					canvas.drawText(title, x, y + 40+60, textPaintBIG);
 					canvas.drawText(String.valueOf(distance) + " km", x,
-							y + 95, textPaint);
-					if (DEBUG)
+							y + 95+60, textPaint);
+				if (DEBUG)
 						canvas.drawText(String.valueOf(deltaAngle), x, y + 75,
 								textPaint);
 
@@ -470,12 +468,12 @@ public class DrawView extends SurfaceView {
 						// dist = sqrt( sqr(distLat) + sqr(distLong) )
 						float x = (float) ((height / 2.0) - (height * Math
 								.abs(deltaAngle)) / (2.0 * VIEW_ANGLE)) - 120;
-						canvas.drawRoundRect(new RectF(x - 35, y, x + 245,
-								y + 110), 10, 10, paint);
-						canvas.drawText(title, x, y + 40,
+						canvas.drawRoundRect(new RectF(x - 35, y+60, x + 245,
+								y + 110+60), 10, 10, paint);
+						canvas.drawText(title, x, y + 40+60,
 								textPaintBIG);
 						canvas.drawText(String.valueOf(distance) + " km", x,
-								y + 95, textPaint);
+								y + 95+60, textPaint);
 						if (DEBUG)
 							canvas.drawText(String.valueOf(deltaAngle), x,
 									y + 75, textPaint);
@@ -499,13 +497,13 @@ public class DrawView extends SurfaceView {
 						// dist = sqrt( sqr(distLat) + sqr(distLong) )
 						float x = (float) ((height / 2.0) + (height * Math
 								.abs(deltaAngle)) / (2.0 * VIEW_ANGLE)) - 120;
-						canvas.drawRoundRect(new RectF(x - 35, y, x + 245,
-								y + 110), 10, 10, paint);
-						canvas.drawText(title, x, y + 40,
-								textPaintBIG);
+						canvas.drawRoundRect(
+								new RectF(x - 35, y+60, x + 245, y + 110+60), 10, 10,
+								paint);
+						canvas.drawText(title, x, y + 40+60, textPaintBIG);
 						canvas.drawText(String.valueOf(distance) + " km", x,
-								y + 95, textPaint);
-						if (DEBUG)
+								y + 95+60, textPaint);
+							if (DEBUG)
 							canvas.drawText(String.valueOf(deltaAngle), x,
 									y + 75, textPaint);
 
@@ -519,12 +517,13 @@ public class DrawView extends SurfaceView {
 				// targetPointsPaint);
 				// canvas.drawText("angles = "+String.valueOf(actualAngle), 50,
 				// 60+20 * i, textPaintDEBUG);
-				if (i == targets.size() - 1)
+				if (i == 0)
 					gpsAngle = (float) deltaAngle;
 
 			}
 
 		}
+		
 		canvas.drawCircle((float) (height - 105), 110, 99, radarDarkPaint);
 		canvas.drawCircle((float) (height - 105), 110, 93, radarDarkPaint2);
 		canvas.drawCircle((float) (height - 105), 110, RADIUS, radarPaint);
