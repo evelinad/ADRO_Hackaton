@@ -74,7 +74,10 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	  		  	activity_map_controls_onroute.setVisibility(View.GONE);
 	  		  	
 	  		  	final View activity_map_controls_initroute = findViewById(R.id.activity_map_controls_initroute);	
-	  		  	activity_map_controls_initroute.setVisibility(View.VISIBLE);	 	  			
+	  		  	activity_map_controls_initroute.setVisibility(View.VISIBLE);
+	  		  	
+	  		  	final View activity_map_hints = findViewById(R.id.hints_initroute);	
+	  		  	activity_map_hints.setVisibility(View.VISIBLE);	 	  		  	
 	  		}
 	  		if (MapActivity.isOnRoute) {
 	  		  	final View activity_map_controls_onroute = findViewById(R.id.activity_map_controls_onroute);
@@ -82,6 +85,9 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	  		  	
 	  		  	final View activity_map_controls_initroute = findViewById(R.id.activity_map_controls_initroute);	
 	  		  	activity_map_controls_initroute.setVisibility(View.GONE);	 	  			
+
+	  		  	final View activity_map_hints = findViewById(R.id.hints_initroute);	
+	  		  	activity_map_hints.setVisibility(View.GONE);	 	  		  	
 	  		}
 	  	}
 	  	
@@ -113,7 +119,11 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	  	activity_map_controls_onroute.setVisibility(View.VISIBLE);
 	  	
 	  	final View activity_map_controls_initroute = findViewById(R.id.activity_map_controls_initroute);	
-	  	activity_map_controls_initroute.setVisibility(View.GONE);	
+	  	activity_map_controls_initroute.setVisibility(View.GONE);
+	  	
+	  	final View activity_map_hints = findViewById(R.id.hints_initroute);	
+	  	activity_map_hints.setVisibility(View.GONE);	 	  		  	
+	  	
 	  	
 	  	// change here
 	  	MapActivity.cameraModeIntent = new Intent(this, CameraActivity.class);
