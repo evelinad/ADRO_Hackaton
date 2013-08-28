@@ -35,25 +35,23 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/FullscreenTheme" >
-            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        
         <activity
             android:name="com.android.maps.MapActivity"
             android:label="@string/title_activity_map" >
         </activity>
-
+        
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyC7nM6nFpS73mnOQjzij2f7nqcJjaYnOa0" />
-
+            android:value="AIzaSyBuZPRyN4QLBuR8YOQIyFD9dHO2ZW_1gqM" />
         <activity
             android:name="com.android.maps.CameraActivity"
             android:label="@string/title_activity_camera" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
