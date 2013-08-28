@@ -120,7 +120,6 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	  	
 	  	// change here
 		// this.cameraModeIntent = new Intent(this, CameraActivity.class);
-
 	}
 
 	public void returnToStart (View view) {
