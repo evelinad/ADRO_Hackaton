@@ -103,8 +103,11 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	@Override
 	public void onMapClick(LatLng point) {
 		// TODO Auto-generated method stub
-		Marker m = map.addMarker(new MarkerOptions().position(point).title("Checkpoint " + pointsNr));
-		locationsList.add(m);
+		if(isOnRouteConfig) {
+			pointsNr++;
+			Marker m = map.addMarker(new MarkerOptions().position(point).title("Checkpoint " + pointsNr));
+			locationsList.add(m);
+		}
 	}
 	
 	
