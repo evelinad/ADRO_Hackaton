@@ -40,7 +40,7 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	private GPSTracker locationManager;
 	
 	// ............................. 
-	static ArrayList<LatLng> locationsList;
+	static ArrayList<Marker> locationsList;
 	static Intent cameraModeIntent;
 	
 	static boolean isAtStart = true;
@@ -55,8 +55,8 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 	    map.setOnMapClickListener(this);
 	    map.setMyLocationEnabled(true);
-	    locationsList = new ArrayList<LatLng>();
-	    locationManager = new GPSTracker(this, map, locationsList);
+	    locationsList = new ArrayList<Marker>();
+	    locationManager = new GPSTracker(this);
 	    Location currentLocation = locationManager.getLocation();
 	    LatLng loc = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()); 
 	    map.moveCamera(CameraUpdateFactory.newLatLng(loc));
@@ -97,8 +97,8 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	@Override
 	public void onMapClick(LatLng point) {
 		// TODO Auto-generated method stub
-		map.addMarker(new MarkerOptions().position(point).title("Checkpoint"));
-		locationsList.add(point);
+		Marker m = map.addMarker(new MarkerOptions().position(point).title("Checkpoint"));
+		locationsList.add(m);
 	}
 	
 	
@@ -108,10 +108,7 @@ public class MapActivity extends Activity implements OnMapClickListener {
 		
 	  	MapActivity.isAtStart = false;
 	  	MapActivity.isOnRouteConfig = false;
-	  	MapActivity.isOnRoute = true;
-
-	  	this.locationsList = new ArrayList<LatLng> ();
-		
+	  	MapActivity.isOnRoute = true;		
 	  	final View activity_map_controls_onroute = findViewById(R.id.activity_map_controls_onroute);
 	  	activity_map_controls_onroute.setVisibility(View.VISIBLE);
 	  	
