@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -23,6 +26,8 @@ public class GPSTracker extends Service implements LocationListener {
  
     private final Context mContext;
     GoogleMap map;
+    PolylineOptions options;
+    Polyline path;
     ArrayList<LatLng> locationsList;
  
     // flag for GPS status
@@ -52,6 +57,8 @@ public class GPSTracker extends Service implements LocationListener {
         getLocation();
         this.map = map;
         this.locationsList = locations;
+        options = new PolylineOptions().width(5).color(Color.BLUE).geodesic(true);
+        path = map.addPolyline(options);
     }
  
     public Location getLocation() {
@@ -190,9 +197,10 @@ public class GPSTracker extends Service implements LocationListener {
  
     @Override
     public void onLocationChanged(Location location) {
-    	LatLng loc = new LatLng(location.getLatitude(), location.getLongitude()); 
-	    map.moveCamera(CameraUpdateFactory.newLatLng(loc));
-	  	map.animateCamera(CameraUpdateFactory.zoomTo(10));
+//    	LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+//    	path.remove();
+//	    options.add(loc);
+//	  	path = map.addPolyline(options);
     }
  
     @Override
@@ -211,5 +219,4 @@ public class GPSTracker extends Service implements LocationListener {
     public IBinder onBind(Intent arg0) {
         return null;
     }
- 
 }
