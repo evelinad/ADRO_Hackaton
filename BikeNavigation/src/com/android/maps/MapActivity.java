@@ -38,9 +38,9 @@ public class MapActivity extends Activity implements OnMapClickListener {
    
 	private GoogleMap map;
 	private GPSTracker locationManager;
-	
+	int pointsNr = 0;
 	// ............................. 
-	static ArrayList<LatLng> locationsList;
+	static ArrayList<Marker> locationsList;
 	static Intent cameraModeIntent;
 	
 	static boolean isAtStart = true;
@@ -55,8 +55,8 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 	    map.setOnMapClickListener(this);
 	    map.setMyLocationEnabled(true);
-	    locationsList = new ArrayList<LatLng>();
-	    locationManager = new GPSTracker(this, map, locationsList);
+	    locationsList = new ArrayList<Marker>();
+	    locationManager = new GPSTracker(this);
 	    Location currentLocation = locationManager.getLocation();
 	    LatLng loc = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()); 
 	    map.moveCamera(CameraUpdateFactory.newLatLng(loc));
@@ -74,7 +74,10 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	  		  	activity_map_controls_onroute.setVisibility(View.GONE);
 	  		  	
 	  		  	final View activity_map_controls_initroute = findViewById(R.id.activity_map_controls_initroute);	
-	  		  	activity_map_controls_initroute.setVisibility(View.VISIBLE);	 	  			
+	  		  	activity_map_controls_initroute.setVisibility(View.VISIBLE);
+	  		  	
+	  		  	final View activity_map_hints = findViewById(R.id.hints_initroute);	
+	  		  	activity_map_hints.setVisibility(View.VISIBLE);	 	  		  	
 	  		}
 	  		if (MapActivity.isOnRoute) {
 	  		  	final View activity_map_controls_onroute = findViewById(R.id.activity_map_controls_onroute);
@@ -82,6 +85,9 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	  		  	
 	  		  	final View activity_map_controls_initroute = findViewById(R.id.activity_map_controls_initroute);	
 	  		  	activity_map_controls_initroute.setVisibility(View.GONE);	 	  			
+
+	  		  	final View activity_map_hints = findViewById(R.id.hints_initroute);	
+	  		  	activity_map_hints.setVisibility(View.GONE);	 	  		  	
 	  		}
 	  	}
 	  	
@@ -97,8 +103,8 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	@Override
 	public void onMapClick(LatLng point) {
 		// TODO Auto-generated method stub
-		map.addMarker(new MarkerOptions().position(point).title("Checkpoint"));
-		locationsList.add(point);
+		Marker m = map.addMarker(new MarkerOptions().position(point).title("Checkpoint " + pointsNr));
+		locationsList.add(m);
 	}
 	
 	
@@ -108,19 +114,19 @@ public class MapActivity extends Activity implements OnMapClickListener {
 		
 	  	MapActivity.isAtStart = false;
 	  	MapActivity.isOnRouteConfig = false;
-	  	MapActivity.isOnRoute = true;
-
-	  	this.locationsList = new ArrayList<LatLng> ();
-		
+	  	MapActivity.isOnRoute = true;		
 	  	final View activity_map_controls_onroute = findViewById(R.id.activity_map_controls_onroute);
 	  	activity_map_controls_onroute.setVisibility(View.VISIBLE);
 	  	
 	  	final View activity_map_controls_initroute = findViewById(R.id.activity_map_controls_initroute);	
-	  	activity_map_controls_initroute.setVisibility(View.GONE);	
+	  	activity_map_controls_initroute.setVisibility(View.GONE);
+	  	
+	  	final View activity_map_hints = findViewById(R.id.hints_initroute);	
+	  	activity_map_hints.setVisibility(View.GONE);	 	  		  	
+	  	
 	  	
 	  	// change here
-		// this.cameraModeIntent = new Intent(this, CameraActivity.class);
-
+	  	MapActivity.cameraModeIntent = new Intent(this, CameraActivity.class);
 	}
 
 	public void returnToStart (View view) {
@@ -132,13 +138,13 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	// ================================================================= 
 	public void switchToCameraMode (View view) {
 	
-		//MapActivity.cameraModeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		//startActivity(this.cameraModeIntent);
+		MapActivity.cameraModeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(MapActivity.cameraModeIntent);
 	}
 	
 	public void exitRoute (View view){
 	
-		//MapActivity.cameraModeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		MapActivity.cameraModeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		finish();
 	}
 	

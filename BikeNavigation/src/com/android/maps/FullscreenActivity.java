@@ -21,6 +21,11 @@ import android.view.View;
  * @see SystemUiHider
  */
 public class FullscreenActivity extends Activity {
+	
+	
+	public static boolean isRecorded = false;
+	public Intent intent;
+	
 	/**
 	 * Whether or not the system UI should be auto-hidden after
 	 * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -104,6 +109,7 @@ public class FullscreenActivity extends Activity {
 				});
 		
 		addListenerOnChkIos();
+		this.intent = new Intent(this, MapActivity.class);
 
 		// Set up the user interaction to manually show or hide the system UI.
 		contentView.setOnClickListener(new View.OnClickListener() {
@@ -171,8 +177,12 @@ public class FullscreenActivity extends Activity {
 	
 	public void initMapView (View view) {
 	
-		Intent intent = new Intent(this, MapActivity.class);
-	    startActivity(intent);
+	    startActivity(this.intent);
+	    
+	    if (FullscreenActivity.isRecorded) {
+	    	
+	    	CameraRecorder cm = new CameraRecorder ();	    	
+	    }
 	}
 	
 	 public void addListenerOnChkIos() {
@@ -189,11 +199,24 @@ public class FullscreenActivity extends Activity {
 					// TODO
 					// add code here when the checkbox is checked
 					// ===========================================
-					finish();
+					FullscreenActivity.isRecorded = true;
+				
+				} else {
+				
+					FullscreenActivity.isRecorded = false;
 				}
 		 
 			  }
 			});
 		 
-		  }	
+	 }	
+}
+
+
+class CameraRecorder {
+
+	public CameraRecorder () {
+		
+		
+	}
 }

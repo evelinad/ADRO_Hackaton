@@ -5,7 +5,6 @@
     tools:context=".MainActivity" >
 
     
-    
     <fragment
         android:id="@+id/map"
         android:layout_width="match_parent"
@@ -27,7 +26,28 @@
            android:background="@color/black_overlay"
            android:orientation="vertical"
            tools:ignore="UselessParent" >
+
+           <TextView
+               android:id="@+id/hints_initroute"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_horizontal"
+               android:layout_weight="1"
+               android:gravity="center_horizontal"
+               android:text="@string/hints_map"
+               android:textAppearance="?android:attr/textAppearanceLarge"
+               android:textColor="@color/white" />
            
+           <TextView
+               android:id="@+id/textView2"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="@string/empty_text"
+               android:textAppearance="?android:attr/textAppearanceSmall" />
+           
+           
+                  
            	<LinearLayout
            	    android:id="@+id/activity_map_controls_initroute"
 	            style="?buttonBarStyle"
@@ -103,6 +123,8 @@
             </LinearLayout>
 
         </LinearLayout>
+
+
 
     </FrameLayout>    
 

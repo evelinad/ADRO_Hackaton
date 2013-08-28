@@ -4,6 +4,7 @@
     <string name="app_name">BikeNavigation</string>
     <string name="dummy_button">Plan Your Ride</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    
     <string name="title_activity_map">MapActivity</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
@@ -20,5 +21,8 @@
 	<string name="switch_to_camera_mode"> View Camera </string>
 	<string name="exit_route"> Exit Route </string>
 	<string name="show_stats"> Show Stats </string>
+	<string name="title_activity_camera"> CameraActivity </string>
 	
+	<string name="hints_map"> Tap on the map to select milestones for your route. When done, tap on Finalize Route. </string>
+
 </resources>
