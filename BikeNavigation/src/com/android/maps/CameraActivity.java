@@ -55,6 +55,7 @@ public class CameraActivity extends Activity {
 		   mHandler.postDelayed(ReadSensorValues, 100);
 		  }       
 		 };
+		 
     @SuppressLint("NewApi")
 	@Override
     public void onCreate(Bundle savedInstanceState) {

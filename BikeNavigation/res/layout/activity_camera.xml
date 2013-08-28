@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+           <TextView
+	           android:id="@+id/camera_text1"
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:layout_gravity="bottom"
+	           android:layout_weight="1"
+	           android:text="Large Text"
+	           android:textAppearance="?android:attr/textAppearanceLarge" />
+                  
+           	<LinearLayout
+           	    android:id="@+id/camera_controls"
+           	    style="?buttonBarStyle"
+           	    android:layout_width="match_parent"
+           	    android:layout_height="wrap_content"
+           	    android:layout_gravity="bottom|center_horizontal"
+           	    android:background="@color/black_overlay"
+           	    android:gravity="bottom"
+           	    android:orientation="horizontal"
+           	    tools:ignore="UselessParent" >
+                               
+	            <Button
+	                android:id="@+id/switch_to_map_mode"
+	                style="@style/btnStyleOrange"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="bottom|left"
+	                android:layout_weight="1"
+	                android:onClick="switchToCameraMode"
+	                android:text="@string/switch_to_camera_mode" />
+
+	            <Button
+	                android:id="@+id/camera_show_stats"
+	                style="@style/btnStyleOrange"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="bottom|center_horizontal"
+	                android:layout_weight="1"
+	                android:onClick="showStats"
+	                android:text="@string/show_stats" />
+	                        
+	            <Button
+	                android:id="@+id/camera_exit_route"
+	                style="@style/btnStyleOrange"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="bottom"
+	                android:layout_weight="1"
+	                android:onClick="exitRoute"
+	                android:text="@string/exit_route" />
+	            
+            </LinearLayout>
+    
+    
+
+</RelativeLayout>
