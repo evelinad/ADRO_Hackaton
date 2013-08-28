@@ -31,6 +31,7 @@ public class DrawView extends SurfaceView {
 			targetPointsPaint;
 	private Paint textPaint = new Paint();
 	private Paint textPaintBIG = new Paint();
+	private Paint textPaintBIG2 = new Paint();
 	private Paint textPaintDEBUG = new Paint();
 	public double azimuth;
 	public ArrayList<LatLng> targets;
@@ -137,6 +138,10 @@ public class DrawView extends SurfaceView {
 
 		textPaintBIG.setARGB(255, 255, 255, 0);
 		textPaintBIG.setTextSize(40);
+		
+
+		textPaintBIG2.setARGB(255, 255, 0, 0);
+		textPaintBIG2.setTextSize(40);
 		Typeface tf = Typeface.create(Typeface.SERIF, Typeface.ITALIC);
 		textPaint.setTypeface(tf);
 		/*
@@ -216,7 +221,7 @@ public class DrawView extends SurfaceView {
 					canvas.drawRoundRect(
 							new RectF(x - 35, y, x + 245, y + 110), 10, 10,
 							paint);
-					canvas.drawText(targetsName.get(i), x, y + 40, textPaintBIG);
+					canvas.drawText(targetsName.get(i), x, y + 40, textPaintBIG2);
 					canvas.drawText(String.valueOf(distance) + " km", x,
 							y + 95, textPaint);
 					if (DEBUG)
@@ -245,7 +250,7 @@ public class DrawView extends SurfaceView {
 					canvas.drawRoundRect(
 							new RectF(x - 35, y, x + 245, y + 110), 10, 10,
 							paint);
-					canvas.drawText(targetsName.get(i), x, y + 40, textPaintBIG);
+					canvas.drawText(targetsName.get(i), x, y + 40, textPaintBIG2);
 					canvas.drawText(String.valueOf(distance) + " km", x,
 							y + 95, textPaint);
 					if (DEBUG)
@@ -279,7 +284,7 @@ public class DrawView extends SurfaceView {
 						canvas.drawRoundRect(new RectF(x - 35, y, x + 245,
 								y + 110), 10, 10, paint);
 						canvas.drawText(targetsName.get(i), x, y + 40,
-								textPaintBIG);
+								textPaintBIG2);
 						canvas.drawText(String.valueOf(distance) + " km", x,
 								y + 95, textPaint);
 						if (DEBUG)
@@ -308,7 +313,7 @@ public class DrawView extends SurfaceView {
 						canvas.drawRoundRect(new RectF(x - 35, y, x + 245,
 								y + 110), 10, 10, paint);
 						canvas.drawText(targetsName.get(i), x, y + 40,
-								textPaintBIG);
+								textPaintBIG2);
 						canvas.drawText(String.valueOf(distance) + " km", x,
 								y + 95, textPaint);
 						if (DEBUG)
