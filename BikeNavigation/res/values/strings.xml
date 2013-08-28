@@ -21,4 +21,6 @@
 	<string name="exit_route"> Exit Route </string>
 	<string name="show_stats"> Show Stats </string>
 	
+	
+	<string name="title_activity_camera"> CAMERA </string>
 </resources>

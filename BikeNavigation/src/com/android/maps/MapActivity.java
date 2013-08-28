@@ -119,7 +119,7 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	  	activity_map_controls_initroute.setVisibility(View.GONE);	
 	  	
 	  	// change here
-		// this.cameraModeIntent = new Intent(this, CameraActivity.class);
+	  	MapActivity.cameraModeIntent = new Intent(this, CameraActivity.class);
 	}
 
 	public void returnToStart (View view) {
@@ -131,13 +131,13 @@ public class MapActivity extends Activity implements OnMapClickListener {
 	// ================================================================= 
 	public void switchToCameraMode (View view) {
 	
-		//MapActivity.cameraModeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		//startActivity(this.cameraModeIntent);
+		MapActivity.cameraModeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(MapActivity.cameraModeIntent);
 	}
 	
 	public void exitRoute (View view){
 	
-		//MapActivity.cameraModeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		MapActivity.cameraModeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		finish();
 	}
 	
