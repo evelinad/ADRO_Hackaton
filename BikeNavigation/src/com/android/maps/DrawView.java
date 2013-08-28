@@ -1,8 +1,6 @@
 package com.android.maps;
 import java.util.ArrayList;
 
-import com.android.maps.R;
-import com.android.maps.R.drawable;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -25,7 +23,7 @@ import com.google.android.gms.maps.model.LatLng;
 @SuppressLint("DrawAllocation")
 public class DrawView extends SurfaceView{
     private  Paint paint;
-    private static final float RADIUS = 70;
+    private static final float RADIUS = 90;
     private static final float MAX_DIST = 200;
     private Paint radarPaint, radarDarkPaint, radarDarkPaint2, tiltPaint,targetPointsPaint;
     private Paint textPaint = new Paint();
@@ -74,7 +72,7 @@ public class DrawView extends SurfaceView{
         paint = new Paint(); 
 	    paint.setShader(shader);
 	    radarPaint= new Paint();
-	    shader = new LinearGradient(0, 0, 0, 140,  Color.argb(30,109, 130, 201),Color.argb(30,109, 130, 201), TileMode.CLAMP);
+	    shader = new LinearGradient(0, 0, 0, 140,  Color.argb(150,109, 130, 201),Color.argb(150,109, 130, 201), TileMode.CLAMP);
 		radarPaint.setShader(shader);
 		
 	    radarDarkPaint= new Paint();
@@ -87,7 +85,7 @@ public class DrawView extends SurfaceView{
 		radarDarkPaint2.setStyle(Paint.Style.STROKE);
 		radarDarkPaint2.setStrokeWidth(3);
 		tiltPaint=new Paint();
-	    shader = new LinearGradient(0, 0, 0, 140,  Color.argb(40,255, 0, 0), Color.argb(40, 255,0, 0), TileMode.CLAMP);
+	    shader = new LinearGradient(0, 0, 0, 140,  Color.argb(255,255, 0, 0), Color.argb(255, 255,0, 0), TileMode.CLAMP);
 		tiltPaint.setShader(shader);
 		tiltPaint.setStyle(Paint.Style.STROKE);
 		tiltPaint.setStrokeWidth(3);
@@ -210,10 +208,9 @@ public class DrawView extends SurfaceView{
 //	    		deltaLong = (long1-long2) * earthcirc * cos((lat1+lat2)/2) / 360;
 //	    		dist = sqrt( sqr(distLat) + sqr(distLong) )
 	    		float x =  (float)((height/2.0)-(height * deltaAngle)/(2.0*VIEW_ANGLE))-120;
-	    		
-	    		canvas.drawRoundRect(new RectF(x-35, y-40, x+245, y+70),10,10, paint);
-	    		canvas.drawText("Ploiesti", x, y, textPaintBIG);
-	    		canvas.drawText(String.valueOf(distance)+" km", x, y+55, textPaint);
+	    		canvas.drawRoundRect(new RectF(x-35, y, x+245, y+110),10,10, paint);
+	    		canvas.drawText(targetsName.get(i), x, y+40, textPaintBIG);
+	    		canvas.drawText(String.valueOf(distance)+" km", x, y+95, textPaint);
 	    		if (DEBUG)canvas.drawText(String.valueOf(deltaAngle), x, y+75, textPaint);
 	    	}
 	    }
@@ -237,9 +234,9 @@ public class DrawView extends SurfaceView{
 //	    		deltaLong = (long1-long2) * earthcirc * cos((lat1+lat2)/2) / 360;
 //	    		dist = sqrt( sqr(distLat) + sqr(distLong) )
 	    		float x =  (float)((height/2.0)+(height * deltaAngle)/(2.0*VIEW_ANGLE))-120;
-	    		canvas.drawRoundRect(new RectF(x-35, y-40, x+245, y+70),10,10, paint);
-	    		canvas.drawText(targetsName.get(i), x, y, textPaintBIG);
-	    		canvas.drawText(String.valueOf(distance)+" km", x, y+55, textPaint);
+	    		canvas.drawRoundRect(new RectF(x-35, y, x+245, y+110),10,10, paint);
+	    		canvas.drawText(targetsName.get(i), x, y+40, textPaintBIG);
+	    		canvas.drawText(String.valueOf(distance)+" km", x, y+95, textPaint);
 	    		if (DEBUG)canvas.drawText(String.valueOf(deltaAngle), x, y+75, textPaint);
 	    	    	
 	    }
@@ -267,9 +264,9 @@ public class DrawView extends SurfaceView{
 //		    		deltaLong = (long1-long2) * earthcirc * cos((lat1+lat2)/2) / 360;
 //		    		dist = sqrt( sqr(distLat) + sqr(distLong) )
 		    		float x =  (float)((height/2.0)-(height * Math.abs(deltaAngle))/(2.0*VIEW_ANGLE))-120;
-		    		canvas.drawRoundRect(new RectF(x-35, y-40, x+245, y+70),10,10, paint);
-		    		canvas.drawText(targetsName.get(i), x, y, textPaintBIG);
-		    		canvas.drawText(String.valueOf(distance)+" km", x, y+55, textPaint);
+		    		canvas.drawRoundRect(new RectF(x-35, y, x+245, y+110),10,10, paint);
+		    		canvas.drawText(targetsName.get(i), x, y+40, textPaintBIG);
+		    		canvas.drawText(String.valueOf(distance)+" km", x, y+95, textPaint);
 		    		if (DEBUG)canvas.drawText(String.valueOf(deltaAngle), x, y+75, textPaint);
 		    	    	
 	        }
@@ -290,9 +287,9 @@ public class DrawView extends SurfaceView{
 //		    		deltaLong = (long1-long2) * earthcirc * cos((lat1+lat2)/2) / 360;
 //		    		dist = sqrt( sqr(distLat) + sqr(distLong) )
 		    		float x =  (float)((height/2.0)+(height * Math.abs(deltaAngle))/(2.0*VIEW_ANGLE))-120;
-		    		canvas.drawRoundRect(new RectF(x-35, y-40, x+245, y+70),10,10, paint);
-		    		canvas.drawText(targetsName.get(i), x, y, textPaintBIG);
-		    		canvas.drawText(String.valueOf(distance)+" km", x, y+55, textPaint);
+		    		canvas.drawRoundRect(new RectF(x-35, y, x+245, y+110),10,10, paint);
+		    		canvas.drawText(targetsName.get(i), x, y+40, textPaintBIG);
+		    		canvas.drawText(String.valueOf(distance)+" km", x, y+95, textPaint);
 		    		if (DEBUG)canvas.drawText(String.valueOf(deltaAngle), x, y+75, textPaint);
 		    	    	
 	        }
@@ -304,6 +301,7 @@ public class DrawView extends SurfaceView{
         if (i == targets.size()-1) gpsAngle = (float) deltaAngle;
         
 	    }
+       }
 	   // if (DEBUG)
 	    {
 	   // canvas.drawRoundRect(new RectF(40, 0, 380, 120),10,10, paint);
@@ -319,24 +317,19 @@ public class DrawView extends SurfaceView{
               
         //canvas.restore();
 	    }
-	    canvas.drawCircle((float)(height-85), 110, 79, radarDarkPaint);
-	    canvas.drawCircle((float)(height-85), 110, 73, radarDarkPaint2);
-	    canvas.drawCircle((float)(height-85), 110,RADIUS, radarPaint );
-	    canvas.drawText(String.valueOf((int)azimuth)+"\u00B0 N", (float)(height-130), 30, textPaintDEBUG);
-	  //  if(azimuth<90)
-	    canvas.drawLine((float)(height-85), 110, (float)(height-85+Math.sin(Math.toRadians(azimuth))*70.0),(float)(110-Math.cos(Math.toRadians(azimuth))*70.0), tiltPaint);
-		// canvas.save();
- 		 Bitmap icon = BitmapFactory.decodeResource(getResources(),R.drawable.triangle48);
-     //   canvas.drawBitmap(icon, (int)height-icon.getHeight(), (int)width-icon.getWidth(), textPaintDEBUG);
-
-Matrix matrix = new Matrix();
-matrix.postRotate((float) gpsAngle);
-Bitmap rotated = Bitmap.createBitmap(icon, 0, 0, icon.getWidth(), icon.getHeight(),
-        matrix, true);
-canvas.drawBitmap(rotated, (float)(height-80.0-rotated.getHeight()/2.0), (float)(105.0-rotated.getWidth()/2.0), textPaintDEBUG);
-//canvas.drawCircle((float)(height-rotated.getHeight())-5, (float)width-rotated.getWidth(),40, tiltPaint );
-        //  canvas.drawLine((float)(height-85-2), 85-2, (float)(height-85+2),(float)(85+2), tiltPaint);
+	    canvas.drawCircle((float)(height-105), 110, 99, radarDarkPaint);
+	    canvas.drawCircle((float)(height-105), 110, 93, radarDarkPaint2);
+	    canvas.drawCircle((float)(height-105), 110,RADIUS, radarPaint );
+	    canvas.drawText(String.valueOf((int)azimuth)+"\u00B0 N", (float)(height-150), 30, textPaintDEBUG);
+	    canvas.drawLine((float)(height-105), 110, (float)(height-105+Math.sin(Math.toRadians(azimuth))*RADIUS),(float)(110-Math.cos(Math.toRadians(azimuth))*RADIUS), tiltPaint);
+ 		 Bitmap icon = BitmapFactory.decodeResource(getResources(),R.drawable.sajeata2);
+ 		Matrix matrix = new Matrix();
+ 		canvas.save();
+ 		matrix.setTranslate((float)(height-105.0-icon.getHeight()/2.0), (float)(105.0-icon.getWidth()/2.0));
+ 	    matrix.preRotate((float)gpsAngle, icon.getWidth()/2, icon.getHeight()/2);
+ 	    canvas.drawBitmap(icon, matrix, null);
+ 	    canvas.restore();
   
-	}
+	
 	}
 }
